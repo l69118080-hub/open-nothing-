@@ -1,0 +1,9 @@
+
+{
+  "name": "Aetheris",
+  "description": "An elite AI coding architect and Computer Scientist powered by Gemini 3 Pro, featuring real-time code execution and deep algorithmic reasoning.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
