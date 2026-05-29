@@ -1,0 +1,16 @@
+{
+  "name": "open-nothing",
+  "version": "0.1.0",
+  "description": "A terminal coding agent that edits code and keeps checking itself until npm run build passes.",
+  "type": "module",
+  "bin": {
+    "open-nothing": "./bin/open-nothing.js"
+  },
+  "scripts": {
+    "build": "node --check bin/open-nothing.js && node --check src/open-nothing.js && node --check src/dashboard.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

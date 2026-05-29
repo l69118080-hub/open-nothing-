@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>open nothing</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="settings">
+        <div>
+          <p class="eyebrow">Coding Agent</p>
+          <h1>open nothing</h1>
+          <p class="subcopy">Choose a model, describe the change, and watch the agent code-check-fix loop.</p>
+        </div>
+
+        <form id="config-form" class="panel">
+          <div class="panel-head">
+            <h2>Model Setup</h2>
+            <span id="config-state" class="pill">Checking</span>
+          </div>
+
+          <label>
+            Source
+            <select name="mode">
+              <option value="api">API</option>
+              <option value="local">Local</option>
+            </select>
+          </label>
+
+          <label>
+            Base URL
+            <input name="baseUrl" type="url" value="https://api.openai.com/v1" required>
+          </label>
+
+          <label>
+            Model
+            <input name="model" value="gpt-4.1-mini" required>
+          </label>
+
+          <label>
+            API key
+            <input name="apiKey" type="password" placeholder="Stored locally in .open-nothing/config.json">
+          </label>
+
+          <label>
+            Build command
+            <input name="buildCommand" value="npm run build" required>
+          </label>
+
+          <button type="submit">Save Config</button>
+        </form>
+      </aside>
+
+      <section class="chat">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">Chat</p>
+            <h2>Build Session</h2>
+          </div>
+          <span id="run-state" class="status idle">Idle</span>
+        </header>
+
+        <section id="log" class="messages" aria-live="polite">
+          <article class="message assistant">
+            <div class="avatar">ON</div>
+            <div class="bubble">
+              Tell me what to build or fix. I will edit the project, run the build, and keep trying until it passes or reaches the attempt limit.
+            </div>
+          </article>
+        </section>
+
+        <form id="run-form" class="composer">
+          <label>
+            Task
+            <textarea name="task" rows="3" placeholder="Ask open nothing to change the code..." required></textarea>
+          </label>
+
+          <div class="run-options">
+            <label>
+              Attempts
+              <input name="maxAttempts" type="number" min="1" max="25" value="5">
+            </label>
+            <label class="check">
+              <input name="allowInstall" type="checkbox">
+              Allow npm installs
+            </label>
+            <button id="run-button" type="submit">Run Agent</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
